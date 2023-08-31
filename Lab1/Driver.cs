@@ -2,13 +2,14 @@
 //
 //	Solution/Project:  Lab 1 
 //	File Name:         Driver.cs
-//	Description:       Review over interfaces and C# concepts . 
+//	Description:       Review over interfaces and C# concepts and create game lists. 
 //	Course:            CSCI-2910
 //	Author:            Christian Rock, rockcm@etsu.edu, East Tennessee State University
 //	Created:           08/29/2023
 //	Copyright:         Christian Rock, 2023
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 using Lab1;
 using System.Collections.Generic;
