@@ -85,3 +85,5 @@ for(int i = 0; i < PubList.Count; i++)
 {
     Console.WriteLine(PubList[i]);
 }
+
+Console.WriteLine(Math.Round(PubList.Count  * 100.0 / videoGames.Count, 2) + "%");
