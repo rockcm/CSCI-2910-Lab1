@@ -17,11 +17,12 @@ using System.Collections.Generic;
 // variables 
 List<VideoGame> videoGames = new List<VideoGame>();
 StreamReader streamReader = null;
-int counter = 0; 
+int counter = 0;
+List<VideoGame> GenreList = new List<VideoGame>();
 
 
-   
-    try
+
+try
     {
         
 
@@ -87,3 +88,17 @@ for(int i = 0; i < PubList.Count; i++)
 }
 
 Console.WriteLine(Math.Round(PubList.Count  * 100.0 / videoGames.Count, 2) + "%");
+
+
+foreach (VideoGame videoGame in videoGames)
+{
+    if(videoGame.genre == "Shooter")
+    {
+        GenreList.Add(videoGame);
+    }
+}
+
+for (int i = 0; i < GenreList.Count; i++)
+{
+    Console.WriteLine(GenreList[i]);
+}
