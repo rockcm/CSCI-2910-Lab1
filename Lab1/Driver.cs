@@ -10,16 +10,24 @@
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/// <summary>
+/// Driver class to demonstrate use of icomparable on a video game list. 
+/// </summary>
 
 using Lab1;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
+
+
+
 
 // variables 
 List<VideoGame> videoGames = new List<VideoGame>();
 StreamReader streamReader = null;
-int counter = 0;
+int counter = 0; // not used 
 List<VideoGame> GenreList = new List<VideoGame>();
-
+List<VideoGame> PubList = new List<VideoGame>();
 
 
 try
@@ -71,8 +79,8 @@ for(int i = 0; i < videoGames.Count; i++)
 }
 
 
-// new list that will get filled with games from a certain publisher. 
-List<VideoGame> PubList = new List<VideoGame>();
+
+
 
 foreach (VideoGame videoGame in videoGames)
 {
@@ -101,4 +109,43 @@ foreach (VideoGame videoGame in videoGames)
 for (int i = 0; i < GenreList.Count; i++)
 {
     Console.WriteLine(GenreList[i]);
+}
+
+
+Console.WriteLine(Math.Round(PubList.Count * 100.0 / videoGames.Count, 2) + "%");
+
+Console.WriteLine(Math.Round(GenreList.Count * 100.0 / videoGames.Count, 2) + "%");
+
+
+
+PublisherData();
+/*
+PulsiherData(); Console.WriteLine("Enter a plublisher");
+string userInput = Console.ReadLine();
+List<VideoGame> data = new List<VideoGame>();
+foreach (VideoGame vid in videoGames)
+{
+    if (userInput == vid.publisher)
+    {
+        data.Add(vid);
+    }
+}*/
+
+  void PublisherData()
+{
+    Console.WriteLine("Please enter a publisher");
+    string userInput = Console.ReadLine();
+    List<VideoGame> data = new List<VideoGame>();
+    foreach (VideoGame vid in videoGames)
+    {
+        if (userInput == vid.publisher)
+        {
+            data.Add(vid);
+        }
+    }
+
+    foreach (VideoGame videoGame in data)
+    {
+        Console.WriteLine(videoGame);
+    }
 }
