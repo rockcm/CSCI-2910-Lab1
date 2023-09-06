@@ -23,6 +23,7 @@ namespace Lab1
     /// </summary>
     public class VideoGame : IComparable<VideoGame>
     {
+        //properties for videogame object
         public string name { get; set; }
         public string platform { get; set; }
         public string year { get; set; }
@@ -35,7 +36,9 @@ namespace Lab1
         public decimal global_Sales { get; set; }
 
 
-
+        /// <summary>
+        /// default constructor
+        /// </summary>
         public VideoGame()
         {
             this.name= string.Empty;
@@ -50,6 +53,19 @@ namespace Lab1
             this.global_Sales= 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name">name of game</param>
+        /// <param name="platform">platform game is on</param>
+        /// <param name="year">year game is released</param>
+        /// <param name="genre">genre of game</param>
+        /// <param name="publisher">publisher of game</param>
+        /// <param name="na_Sales">na sales for game</param>
+        /// <param name="eu_Sales">eu sales for game</param>
+        /// <param name="jp_Sales">jp sales for game</param>
+        /// <param name="other_Sales">other sales for game</param>
+        /// <param name="global_Sales">global sales for game</param>
         public VideoGame(string name, string platform, string year, string genre, string publisher, decimal na_Sales, decimal eu_Sales, decimal jp_Sales, decimal other_Sales, decimal global_Sales)
         {
             this.name = name;
@@ -63,7 +79,10 @@ namespace Lab1
             this.other_Sales = other_Sales;
             this.global_Sales = global_Sales;
         }
-
+        /// <summary>
+        /// copy constructor 
+        /// </summary>
+        /// <param name="videoGame"> video game object</param>
         public VideoGame(VideoGame videoGame)
         {
             this.name= videoGame.name;
@@ -77,10 +96,18 @@ namespace Lab1
             this.other_Sales= videoGame.other_Sales;
             this.global_Sales= videoGame.global_Sales;
         }
-
+        /// <summary>
+        /// comapares the name of one videogame object to another
+        /// </summary>
+        /// <param name="obj">video game object</param>
+        /// <returns></returns>
         public int CompareTo(VideoGame obj) => string.Compare(name, obj.name);
         
 
+        /// <summary>
+        /// to string that displays all the info for a game appropriately 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string str = $"Name: {name}\n";

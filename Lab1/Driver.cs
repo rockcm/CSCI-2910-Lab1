@@ -25,11 +25,10 @@ using System.Runtime.CompilerServices;
 // variables 
 List<VideoGame> videoGames = new List<VideoGame>();
 StreamReader streamReader = null;
-int counter = 0; // not used 
 List<VideoGame> GenreList = new List<VideoGame>();
 List<VideoGame> PubList = new List<VideoGame>();
 
-
+// try catch for streamreader 
 try
     {
         
@@ -37,16 +36,16 @@ try
         // creating a stream reader to read in the file given. 
         streamReader = new StreamReader(@"../../../gameList/videogames.csv");
 
-     
+        streamReader.ReadLine(); // reading first line of document
         // while stream reader is not at the end of doc, continue loop. 
         while (streamReader.Peek() != -1)
         {
-                // splitting each line read in to fiels that can be accessed. 
+            // splitting each line read in to fiels that can be accessed and used to create videogame item. 
             string textLine = streamReader.ReadLine();
             string[] fields = textLine.Split(",");
             VideoGame Videogame = new VideoGame(fields[0], fields[1], fields[2], fields[3], fields[4], Convert.ToDecimal(fields[5]), Convert.ToDecimal(fields[6]), Convert.ToDecimal(fields[7]), Convert.ToDecimal(fields[8]), Convert.ToDecimal(fields[9]));
             videoGames.Add(Videogame);
-        counter++;
+       
             
         }
       
@@ -59,7 +58,7 @@ try
     }
     catch (Exception e)
     {
-    Console.WriteLine(e.Message + "2");
+    Console.WriteLine(e.Message);
     }
 
 
@@ -81,7 +80,7 @@ for(int i = 0; i < videoGames.Count; i++)
 
 
 
-
+// adding games to list that match publisher
 foreach (VideoGame videoGame in videoGames)
 {
     if(videoGame.publisher == "Nintendo")
@@ -90,14 +89,15 @@ foreach (VideoGame videoGame in videoGames)
     }
 }
 
+//displaying publisher list
 for(int i = 0; i < PubList.Count; i++)
 {
     Console.WriteLine(PubList[i]);
 }
 
-Console.WriteLine(Math.Round(PubList.Count  * 100.0 / videoGames.Count, 2) + "%");
 
 
+// adding games to list that match genre
 foreach (VideoGame videoGame in videoGames)
 {
     if(videoGame.genre == "Shooter")
@@ -106,31 +106,23 @@ foreach (VideoGame videoGame in videoGames)
     }
 }
 
+//displaying genre list
 for (int i = 0; i < GenreList.Count; i++)
 {
     Console.WriteLine(GenreList[i]);
 }
 
-
+// displaying publisher and genre list percents 
 Console.WriteLine(Math.Round(PubList.Count * 100.0 / videoGames.Count, 2) + "%");
 
 Console.WriteLine(Math.Round(GenreList.Count * 100.0 / videoGames.Count, 2) + "%");
 
 
-
+//calling methods 
 PublisherData();
-/*
-PulsiherData(); Console.WriteLine("Enter a plublisher");
-string userInput = Console.ReadLine();
-List<VideoGame> data = new List<VideoGame>();
-foreach (VideoGame vid in videoGames)
-{
-    if (userInput == vid.publisher)
-    {
-        data.Add(vid);
-    }
-}*/
+GenreData();
 
+// method that allows the user to enter a publisher to create a list for and displays that list 
   void PublisherData()
 {
     Console.WriteLine("Please enter a publisher");
@@ -139,6 +131,26 @@ foreach (VideoGame vid in videoGames)
     foreach (VideoGame vid in videoGames)
     {
         if (userInput == vid.publisher)
+        {
+            data.Add(vid);
+        }
+    }
+
+    foreach (VideoGame videoGame in data)
+    {
+        Console.WriteLine(videoGame);
+    }
+}
+
+// method that allows the user to enter a genre to create a list for and displays that list 
+void GenreData()
+{
+    Console.WriteLine("Please enter a genre");
+    string userInput = Console.ReadLine();
+    List<VideoGame> data = new List<VideoGame>();
+    foreach (VideoGame vid in videoGames)
+    {
+        if (userInput == vid.genre)
         {
             data.Add(vid);
         }
