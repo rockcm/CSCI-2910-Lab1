@@ -30,49 +30,47 @@ List<VideoGame> PubList = new List<VideoGame>();
 
 // try catch for streamreader 
 try
+{
+
+
+    // creating a stream reader to read in the file given. 
+    streamReader = new StreamReader(@"../../../gameList/videogames.csv");
+
+    streamReader.ReadLine(); // reading first line of document
+                             // while stream reader is not at the end of doc, continue loop. 
+    while (streamReader.Peek() != -1)
     {
-        
-
-        // creating a stream reader to read in the file given. 
-        streamReader = new StreamReader(@"../../../gameList/videogames.csv");
-
-        streamReader.ReadLine(); // reading first line of document
-        // while stream reader is not at the end of doc, continue loop. 
-        while (streamReader.Peek() != -1)
-        {
-            // splitting each line read in to fiels that can be accessed and used to create videogame item. 
-            string textLine = streamReader.ReadLine();
-            string[] fields = textLine.Split(",");
-            VideoGame Videogame = new VideoGame(fields[0], fields[1], fields[2], fields[3], fields[4], Convert.ToDecimal(fields[5]), Convert.ToDecimal(fields[6]), Convert.ToDecimal(fields[7]), Convert.ToDecimal(fields[8]), Convert.ToDecimal(fields[9]));
-            videoGames.Add(Videogame);
-       
-            
-        }
-      
+        // splitting each line read in to fiels that can be accessed and used to create videogame item. 
+        string textLine = streamReader.ReadLine();
+        string[] fields = textLine.Split(",");
+        VideoGame Videogame = new VideoGame(fields[0], fields[1], fields[2], fields[3], fields[4], Convert.ToDecimal(fields[5]), Convert.ToDecimal(fields[6]), Convert.ToDecimal(fields[7]), Convert.ToDecimal(fields[8]), Convert.ToDecimal(fields[9]));
+        videoGames.Add(Videogame);
 
 
-  }
-    catch (FormatException e) 
-    { 
-        Console.WriteLine($"{e.Message}"); 
     }
-    catch (Exception e)
-    {
+
+
+
+}
+catch (FormatException e)
+{
+    Console.WriteLine($"{e.Message}");
+}
+catch (Exception e)
+{
     Console.WriteLine(e.Message);
-    }
-
-
-    finally // makes sure reader closes regardless
-    {
-        if (streamReader != null)
+}
+finally // makes sure reader closes regardless
+{
+    if (streamReader != null)
         streamReader.Close();
-    }
+}
 
 // sorting games by name
 videoGames.Sort();
 
 // printing out all games after sort 
-for(int i = 0; i < videoGames.Count; i++)
+for (int i = 0; i < videoGames.Count; i++)
 {
     Console.WriteLine(videoGames[i]);
 }
@@ -83,14 +81,16 @@ for(int i = 0; i < videoGames.Count; i++)
 // adding games to list that match publisher
 foreach (VideoGame videoGame in videoGames)
 {
-    if(videoGame.publisher == "Nintendo")
+    if (videoGame.publisher == "Nintendo")
     {
         PubList.Add(videoGame);
     }
 }
 
+PubList.Sort();
+
 //displaying publisher list
-for(int i = 0; i < PubList.Count; i++)
+for (int i = 0; i < PubList.Count; i++)
 {
     Console.WriteLine(PubList[i]);
 }
@@ -100,11 +100,13 @@ for(int i = 0; i < PubList.Count; i++)
 // adding games to list that match genre
 foreach (VideoGame videoGame in videoGames)
 {
-    if(videoGame.genre == "Shooter")
+    if (videoGame.genre == "Shooter")
     {
         GenreList.Add(videoGame);
     }
 }
+
+GenreList.Sort();
 
 //displaying genre list
 for (int i = 0; i < GenreList.Count; i++)
@@ -113,17 +115,24 @@ for (int i = 0; i < GenreList.Count; i++)
 }
 
 // displaying publisher and genre list percents 
-Console.WriteLine(Math.Round(PubList.Count * 100.0 / videoGames.Count, 2) + "%");
+Console.WriteLine($"Out of {videoGames.Count} games, {PubList.Count} are developed by Nintendo. Which is {Math.Round(PubList.Count * 100.0 / videoGames.Count, 2)}%");
 
-Console.WriteLine(Math.Round(GenreList.Count * 100.0 / videoGames.Count, 2) + "%");
+Console.WriteLine($"Out of {videoGames.Count} games, {GenreList.Count} are from the shooter genre. Which is {Math.Round(GenreList.Count * 100.0 / videoGames.Count, 2)}%");
+Console.WriteLine("press any key to continue");
+Console.ReadKey();
 
+
+Console.WriteLine();
 
 //calling methods 
 PublisherData();
 GenreData();
 
+
+
+
 // method that allows the user to enter a publisher to create a list for and displays that list 
-  void PublisherData()
+void PublisherData()
 {
     Console.WriteLine("Please enter a publisher");
     string userInput = Console.ReadLine();
@@ -161,3 +170,4 @@ void GenreData()
         Console.WriteLine(videoGame);
     }
 }
+    
