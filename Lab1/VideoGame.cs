@@ -1,8 +1,8 @@
 ﻿///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //	Solution/Project:  Lab 1 
-//	File Name:         game.cs
-//	Description:       class to create a game object.  
+//	File Name:         VideoGame.cs
+//	Description:       class to create a vidoegame object for use in driver.  
 //	Course:            CSCI-2910
 //	Author:            Christian Rock, rockcm@etsu.edu, East Tennessee State University
 //	Created:           08/29/2023
@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 namespace Lab1
 {
     /// <summary>
-    /// class to create cideo game objects 
+    /// class to create video game objects that can be compared to each other
     /// </summary>
     public class VideoGame : IComparable<VideoGame>
     {
@@ -54,7 +54,7 @@ namespace Lab1
         }
 
         /// <summary>
-        /// 
+        /// parameterized constructor
         /// </summary>
         /// <param name="name">name of game</param>
         /// <param name="platform">platform game is on</param>
