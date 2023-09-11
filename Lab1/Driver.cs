@@ -74,8 +74,9 @@ for (int i = 0; i < videoGames.Count; i++)
 {
     Console.WriteLine(videoGames[i]);
 }
-
-
+Console.WriteLine();
+Console.WriteLine("Full list sorted above\n Press any key to continue.");
+Console.ReadKey();
 
 
 // adding games to list that match publisher
@@ -95,6 +96,11 @@ for (int i = 0; i < PubList.Count; i++)
     Console.WriteLine(PubList[i]);
 }
 
+Console.WriteLine();
+Console.WriteLine($"Out of {videoGames.Count} games, {PubList.Count} are developed by Nintendo. Which is {Math.Round(PubList.Count * 100.0 / videoGames.Count, 2)}%");
+Console.WriteLine();
+Console.WriteLine("Publisher list sorted above\n Press any key to continue.");
+Console.ReadKey();
 
 
 // adding games to list that match genre
@@ -113,16 +119,18 @@ for (int i = 0; i < GenreList.Count; i++)
 {
     Console.WriteLine(GenreList[i]);
 }
+Console.WriteLine();
+Console.WriteLine("Genre list sorted above\n ");
+
 
 // displaying publisher and genre list percents 
-Console.WriteLine($"Out of {videoGames.Count} games, {PubList.Count} are developed by Nintendo. Which is {Math.Round(PubList.Count * 100.0 / videoGames.Count, 2)}%");
+
 
 Console.WriteLine($"Out of {videoGames.Count} games, {GenreList.Count} are from the shooter genre. Which is {Math.Round(GenreList.Count * 100.0 / videoGames.Count, 2)}%");
 Console.WriteLine("press any key to continue");
 Console.ReadKey();
 
-
-Console.WriteLine();
+;
 
 //calling methods 
 PublisherData();
@@ -149,6 +157,11 @@ void PublisherData()
     {
         Console.WriteLine(videoGame);
     }
+
+    Console.WriteLine($"Out of {videoGames.Count} games, {data.Count} are from the {userInput}. Which is {Math.Round(data.Count * 100.0 / videoGames.Count, 2)}%");
+    Console.WriteLine("press any key to continue");
+    Console.ReadKey();
+
 }
 
 // method that allows the user to enter a genre to create a list for and displays that list 
@@ -169,5 +182,9 @@ void GenreData()
     {
         Console.WriteLine(videoGame);
     }
+
+    Console.WriteLine($"Out of {videoGames.Count} games, {data.Count} are from the {userInput} genre. Which is {Math.Round(data.Count * 100.0 / videoGames.Count, 2)}%");
+    Console.WriteLine("press any key to continue");
+    Console.ReadKey();
 }
     
