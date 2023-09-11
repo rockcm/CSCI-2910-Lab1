@@ -90,7 +90,7 @@ foreach (VideoGame videoGame in videoGames)
 
 PubList.Sort();
 
-//displaying publisher list
+//displaying publisher list and percent
 for (int i = 0; i < PubList.Count; i++)
 {
     Console.WriteLine(PubList[i]);
@@ -123,7 +123,7 @@ Console.WriteLine();
 Console.WriteLine("Genre list sorted above\n ");
 
 
-// displaying publisher and genre list percents 
+// displaying genre list percents 
 
 
 Console.WriteLine($"Out of {videoGames.Count} games, {GenreList.Count} are from the shooter genre. Which is {Math.Round(GenreList.Count * 100.0 / videoGames.Count, 2)}%");
